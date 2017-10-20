@@ -1,0 +1,39 @@
+﻿<div class="row">
+    <div class="col-md-6">
+        <label for="resultInput">Input new value of result:</label>
+        <input id="resultInput" type="text" /> <br /><br />
+
+        <label for="stackItemInput">New item of stack:</label>
+        <input id="stackItem" type="text" /> <br /><br />
+
+        <label for="method">Choose a method:</label>
+        <input id="method" type="radio" name="method" value="GET" /> GET
+        <input id="method" type="radio" name="method" value="POST" /> POST
+        <input id="method" type="radio" name="method" value="PUT" /> PUT
+        <input id="method" type="radio" name="method" value="DELETE" /> DELETE <br /><br />
+
+        <button id="reqBtn" class="btn btn-success">Send request</button>
+    </div>
+    <div class="col-md-6">
+        <div id="result"></div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#reqBtn').click(function () {
+                var method = $('#method:checked').val();
+
+                var newItem = parseInt($('#stackItem').val());
+                var result = parseInt($('#resultInput').val());
+
+                if (!method || typeof newItem !== 'number' || typeof result !== 'number') {
+                    alert('ERRRRRRROOOOOOR!!!!!');
+                }
+
+            })
+        })
+    </script>
+    
+}
