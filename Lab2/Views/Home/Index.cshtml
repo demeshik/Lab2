@@ -21,6 +21,13 @@
 
 @section scripts {
     <script>
+        function getRequest() {
+            $.get('/api/stack', )
+                .done(function (data) {
+                    $('#result').text(JSON.stringify(data, null, 4));
+                })
+        }
+
         $(document).ready(function () {
             $('#reqBtn').click(function () {
                 var method = $('#method:checked').val();
@@ -28,8 +35,21 @@
                 var newItem = parseInt($('#stackItem').val());
                 var result = parseInt($('#resultInput').val());
 
-                if (!method || typeof newItem !== 'number' || typeof result !== 'number') {
-                    alert('ERRRRRRROOOOOOR!!!!!');
+                if (!method) {
+                    alert('Choose a method you need at!');
+                }
+                else {
+                    switch (method) {
+                        case 'GET':
+                            getRequest();
+                            break;
+                        case 'POST':
+                            break;
+                        case 'PUT':
+                            break;
+                        case 'DELETE':
+                            break;
+                    }
                 }
 
             })
